@@ -1,0 +1,23 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="android:Theme.Holo.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+    </style>
+    <style name="AppCompat.NoActionBar" parent="@style/Theme.AppCompat">
+        <item name="android:windowNoTitle">true</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowActionBar">false</item>
+        <item name="windowActionBar">false</item>
+    </style>
+
+
+        <style name="AlertDialogNoActionBar" parent="@android:style/Theme.Dialog">
+            <item name="android:windowNoTitle">true</item>
+            <item name="windowNoTitle">true</item>
+            <item name="android:windowActionBar">false</item>
+            <item name="windowActionBar">false</item>
+        </style>
+
+
+</resources>
