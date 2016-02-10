@@ -95,12 +95,7 @@ public class BaseAcitivity extends AppCompatActivity {
 public static void checkJson(){
 
 }
-    public void AlertDialogError(String msg) {
-        // dialogCheck.cancel();
-        AlertDialog.Builder ad = new AlertDialog.Builder(this); // adb.create();
-        ad.setMessage(msg);
-        ad.show();
-    }
+
     public boolean checkNetworkConnectivityfunction() {
         // TODO Auto-generated method stub
         ConnectivityManager connMgr = (ConnectivityManager)

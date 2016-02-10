@@ -30,7 +30,7 @@
         <activity
             android:name=".PageLoginandRegister"
             android:label="Login and Register"
-            android:theme="@style/AlertDialogNoActionBar"
+
             />
         <activity
             android:name=".PageComplain"

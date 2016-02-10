@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.widget.Button;
 
@@ -48,5 +49,14 @@ public class PageLoginandRegister extends FragmentActivity {
             }
         });
 
+    }
+    public void closepageloginandreg(){
+        finish();
+    }
+    public void AlertDialogError(String msg) {
+        // dialogCheck.cancel();
+        AlertDialog.Builder ad = new AlertDialog.Builder(this); // adb.create();
+        ad.setMessage(msg);
+        ad.show();
     }
 }

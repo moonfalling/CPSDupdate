@@ -26,7 +26,7 @@ import com.inno.cpsd.adapter.CpsdGridAdapter;
 public class PageCPSD extends android.support.v4.app.Fragment {
     GridView gridcategory;
     Spinner spcpandtrue;
-    TextView tvpolicy,tvloginandreg;
+    TextView tvpolicy,tvloginname;
     Button btcomplain,bttimeline;
     int[] imageId = {
             R.drawable.esdgicons01,
@@ -77,8 +77,9 @@ public class PageCPSD extends android.support.v4.app.Fragment {
         gridcategory=(GridView)rootView.findViewById(R.id.cpsdmaincategory);
         gridcategory.setAdapter(adapter);
         spcpandtrue =(Spinner)rootView.findViewById(R.id.spcpandtrue);
+        tvloginname=(TextView)rootView.findViewById(R.id.tvloginname);
         tvpolicy =(TextView)rootView.findViewById(R.id.tvpolicy);
-        tvloginandreg =(TextView)rootView.findViewById(R.id.tvloginandreg);
+
         btcomplain = (Button)rootView.findViewById(R.id.btcomplain);
         bttimeline = (Button)rootView.findViewById(R.id.bttimeline);
         final String[] spcategory = getResources().getStringArray(R.array.spcptrue);
@@ -92,13 +93,7 @@ public class PageCPSD extends android.support.v4.app.Fragment {
                 startActivity(newActivity);
             }
         });
-        tvloginandreg.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent newActivity = new Intent(getContext(), PageLoginandRegister.class);
-                startActivity(newActivity);
-            }
-        });
+
         btcomplain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -133,5 +128,6 @@ public class PageCPSD extends android.support.v4.app.Fragment {
         return fragment;
     }
 
-
 }
+
+

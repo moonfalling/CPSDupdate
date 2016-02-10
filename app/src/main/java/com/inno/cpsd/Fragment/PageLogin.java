@@ -2,11 +2,14 @@ package com.inno.cpsd.Fragment;
 
 import android.content.Intent;
 
+import android.content.SharedPreferences;
 import android.media.Image;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceActivity;
+import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,7 +32,9 @@ import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
 import com.bluelinelabs.logansquare.LoganSquare;
 import com.inno.cpsd.BaseAcitivity;
+import com.inno.cpsd.MainMoblieActivity;
 import com.inno.cpsd.Model.LoginModel;
+import com.inno.cpsd.PageLoginandRegister;
 import com.inno.cpsd.PagePolicy;
 import com.inno.cpsd.R;
 import com.inno.cpsd.adapter.CpsdGridAdapter;
@@ -77,7 +82,7 @@ public class PageLogin extends Fragment {
           inusername = etusername.getText().toString();
           inpassword = etpassword.getText().toString();
           if (inusername.length() == 0 || inpassword.length() == 0) {
-              ((BaseAcitivity) getActivity()).AlertDialogError("Please fill in Username or Password");
+              ((PageLoginandRegister) getActivity()).AlertDialogError("Please fill in Username or Password");
               return;
           } else {
 
@@ -89,7 +94,9 @@ public class PageLogin extends Fragment {
                           public void onResponse(String response) {
                               try {
                                   JSONObject jsonResponse = new JSONObject(response);
-
+                                  if (jsonResponse.has("info")) {
+                                      info = jsonResponse.getString("info");
+                                  }
                                   if (jsonResponse.has("status")) {
                                      status = jsonResponse.getString("status");
                                       if(status.equals("OK")){
@@ -113,14 +120,18 @@ public class PageLogin extends Fragment {
                                           if (jsonResponse.has("email")) {
                                               email = jsonResponse.getString("email");
                                           }
-                                          if (jsonResponse.has("info")) {
-                                              info = jsonResponse.getString("info");
-                                          }
+
 
                                           Toast.makeText(getActivity(),info,Toast.LENGTH_SHORT).show();
+                                          saveinformation();
+
                                       }
                                       else{
-                                          Toast.makeText(getActivity(),"Something Wrong",Toast.LENGTH_SHORT).show();
+                                          if(status.equals("Error")){
+                                              Toast.makeText(getActivity(),info ,Toast.LENGTH_SHORT).show();
+
+                                          }
+
                                       }
                                   }
 
@@ -165,6 +176,24 @@ public class PageLogin extends Fragment {
         fragment.setArguments(args);
 
         return fragment;
+    }
+
+    private void saveinformation(){
+
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putString("SHstaffid",staffid);
+        editor.putString("SHname", name);
+        editor.putString("SHsurname", surname);
+        editor.putString("SHusername", username);
+        editor.putString("SHpassword",password);
+        editor.putString("SHmobile",mobile);
+        editor.putString("SHemail",email);
+        editor.putString("SHinfo",info);
+        editor.putString("SHstatus",status);
+        editor.apply();
+        ((PageLoginandRegister) getActivity()).closepageloginandreg();
+
     }
 
 
