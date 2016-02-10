@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/CPSDgit.iml" filepath="$PROJECT_DIR$/CPSDgit.iml" />
+      <module fileurl="file://$PROJECT_DIR$/CPSDupdate.iml" filepath="$PROJECT_DIR$/CPSDupdate.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
