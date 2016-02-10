@@ -1,8 +1,11 @@
 package com.inno.cpsd;
 
 import android.app.Activity;
+import android.content.Context;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.R.layout;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 
 import java.io.BufferedReader;
@@ -23,18 +26,18 @@ public class BaseAcitivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-         try {
-             String urlParameters = "tag=" + URLEncoder.encode("Dota2", "UTF-8");
-             String result = executePost("http://mylive.in.th/api/main",urlParameters);
-             if (checkJson(result)){
-                 // result is json format
-             } else {
-                 // result is plain text / invalid format
-             }
-         } catch (UnsupportedEncodingException e){
-             // Display error on screen
-         }
+//
+//         try {
+//             String urlParameters = "tag=" + URLEncoder.encode("Dota2", "UTF-8");
+//             String result = executePost("http://mylive.in.th/api/main",urlParameters);
+//             if (checkJson(result)){
+//                 // result is json format
+//             } else {
+//                 // result is plain text / invalid format
+//             }
+//         } catch (UnsupportedEncodingException e){
+//             // Display error on screen
+//         }
     }
 
     public static String executePost(String targetURL, String urlParameters) {
@@ -46,7 +49,7 @@ public class BaseAcitivity extends AppCompatActivity {
             //Create connection
             url = new URL(targetURL);
             connection = (HttpURLConnection) url.openConnection();
-            connection.setRequestMethod("POST");4
+            connection.setRequestMethod("POST");
             connection.setRequestProperty("Content-Type",
                     "application/x-www-form-urlencoded");
 
@@ -92,6 +95,32 @@ public class BaseAcitivity extends AppCompatActivity {
 public static void checkJson(){
 
 }
+    public void AlertDialogError(String msg) {
+        // dialogCheck.cancel();
+        AlertDialog.Builder ad = new AlertDialog.Builder(this); // adb.create();
+        ad.setMessage(msg);
+        ad.show();
+    }
+    public boolean checkNetworkConnectivityfunction() {
+        // TODO Auto-generated method stub
+        ConnectivityManager connMgr = (ConnectivityManager)
+                this.getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        final android.net.NetworkInfo wifi =
+                connMgr.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
+
+        final android.net.NetworkInfo mobile =
+                connMgr.getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
+
+        if( wifi.isConnected() || mobile.isConnected()) {
+
+            return true;
+
+        } else {
+
+            return false;
+        }
+    }
 
 
 }
