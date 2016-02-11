@@ -5,11 +5,13 @@ import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.widget.TextView;
 
 import com.inno.cpsd.Fragment.PageCPSD;
+import com.inno.cpsd.View.NavigationDrawer;
 
 
 /**
@@ -18,6 +20,7 @@ import com.inno.cpsd.Fragment.PageCPSD;
 public class MainMoblieActivity extends BaseAcitivity {
     TextView tvloginandreg,tvloginname;
     String SHusername,SHstaffid;
+    private DrawerLayout drawerLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +30,7 @@ public class MainMoblieActivity extends BaseAcitivity {
         getSupportFragmentManager().beginTransaction()
                 .add(R.id.container1, PageCPSD.newInstance(1))
                 .commit();
-
+        drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         tvloginandreg =(TextView)findViewById(R.id.tvloginandreg);
         tvloginname = (TextView)findViewById(R.id.tvloginname);
         tvloginandreg.setOnClickListener(new View.OnClickListener() {
@@ -64,6 +67,13 @@ public class MainMoblieActivity extends BaseAcitivity {
         loadinguserinfo();
         updateusertv();
 
+    }
+    private void loadnavdrawer(){
+
+        getSupportFragmentManager()
+                .beginTransaction()
+                .add(R.id.drawer_content, NavigationDrawer.newInstance())
+                .commit();
     }
 
 }
