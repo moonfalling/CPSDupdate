@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.inno.cpsd.Fragment.PageCPSD;
 import com.inno.cpsd.View.NavigationDrawer;
+import com.inno.cpsd.adapter.CpsdNavMenuAdapter;
 
 
 /**
@@ -33,6 +34,7 @@ public class MainMoblieActivity extends BaseAcitivity {
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         tvloginandreg =(TextView)findViewById(R.id.tvloginandreg);
         tvloginname = (TextView)findViewById(R.id.tvloginname);
+        loadnavdrawer();
         tvloginandreg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

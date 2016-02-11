@@ -58,22 +58,12 @@ public class NavigationDrawer extends Fragment {
 
 
         String[] menuary = {"Profile", "Timeline", "Complain"};
-        List<String> menulist = Arrays.asList(menuary);
-        int[] imglist = {R.drawable.navprofile01,R.drawable.navprofile02,R.drawable.navprofile03};
+        Integer[] imglist = {R.drawable.navprofile01,R.drawable.navprofile02,R.drawable.navprofile03};
         listView = (ListView)rootView.findViewById(R.id.mainmenu);
         drawerLayout = (DrawerLayout)rootView.findViewById(R.id.drawer_layout);
 
-
-
-
-        List<NavmenuModel> resultlist = new ArrayList<NavmenuModel>();
-        for(CpsdNavMenuAdapter con :menuary){
-
-        }
-        resultlist.add(menuary);
-
-        mAdapter = new CpsdNavMenuAdapter(getActivity(),resultlist);
-        listView.setAdapter(mAdapter);
+        CpsdNavMenuAdapter adapter=new CpsdNavMenuAdapter(getActivity(), menuary, imglist);
+        listView.setAdapter(adapter);
 
 
         return rootView;
