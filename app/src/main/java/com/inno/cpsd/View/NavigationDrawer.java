@@ -62,7 +62,7 @@ public class NavigationDrawer extends Fragment {
         listView = (ListView)rootView.findViewById(R.id.mainmenu);
         drawerLayout = (DrawerLayout)rootView.findViewById(R.id.drawer_layout);
 
-        CpsdNavMenuAdapter adapter=new CpsdNavMenuAdapter(getActivity(), menuary, imglist);
+        CpsdNavMenuAdapter adapter=new CpsdNavMenuAdapter(this.getActivity(), menuary, imglist);
         listView.setAdapter(adapter);
 
 

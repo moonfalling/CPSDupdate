@@ -34,10 +34,10 @@ public class CpsdNavMenuAdapter extends ArrayAdapter<String> {
     }
 
     public View getView(int position,View view,ViewGroup parent) {
-        
+
 
         LayoutInflater inflater=context.getLayoutInflater();
-        View rowView=inflater.inflate(R.layout.nav_layout, null,true);
+        View rowView=inflater.inflate(R.layout.nav_custom_lv, parent,false);
 
         TextView txtTitle = (TextView) rowView.findViewById(R.id.navmenuname);
         ImageView imageView = (ImageView) rowView.findViewById(R.id.navmenuicon);
